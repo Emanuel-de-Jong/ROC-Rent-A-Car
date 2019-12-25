@@ -1,0 +1,156 @@
+﻿@model Rent_a_Car.Models.AutoType
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<style>
+    .offsetInput {
+        margin-left: 50px;
+    }
+
+    body {
+        background-color: #4d648d;
+    }
+</style>
+
+<div class="container">
+    <div class="row register-form" style="margin-top: 50px; background-color: #4d648d;">
+        <div class="col-md-8 col-xl-10 offset-md-2 offset-xl-1">
+            <form class="custom-form" style="background-color: #283655;color: rgb(255,255,255);" action="/AutoTypes/Edit" method="post" enctype="multipart/form-data" role="form" novalidate="novalidate">
+                @Html.AntiForgeryToken()
+                <h1 style="color: rgb(255,255,255);">Crëeer Autotype</h1>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-row" style="color: rgb(255,255,255);">
+                    <div class="col-xl-12 offset-xl-0" style="color: rgb(255,255,255);">
+                        <div id="persoonsgegevens">
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="name-input-field" style="color: rgb(255,255,255);">Merk</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.Merk, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Merk, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="email-input-field" style="color: rgb(255,255,255);">Type</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Laadruimte</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.LaadRuimte, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.LaadRuimte, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Schakeltype</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.DropDownList("SchakelTypeID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SchakelTypeID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Trekhaak</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.Trekhaak)
+                                    @Html.ValidationMessageFor(model => model.Trekhaak, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Aantal Zitplaatsen</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.ZitPlaatsen, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ZitPlaatsen, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Brandstof Type</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.DropDownList("BrandstofID", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.BrandstofID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Gewicht in KG</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.Gewicht, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Gewicht, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Aantal Deuren</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.AantalDeuren, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AantalDeuren, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Uitvoering</label></div>
+                                <div class="col-sm-6 input-column">
+                                    @Html.EditorFor(model => model.Uitvoering, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Uitvoering, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            @{
+                                if (Model.Foto != null && Model.Foto.Length > 0)
+                                {
+
+                                    var base64 = Convert.ToBase64String(Model.Foto);
+                                    var imgSrc = String.Format("data:image;base64,{0}", base64);
+
+                                    <img src="@imgSrc" class="image" style="max-height: 281.5px; max-width: 500px" />
+                                }
+                                else
+                                {
+                                    <img src="~/Content/Placeholder_car.jpg" class="image" style="max-height: 281.5px; max-width: 500px" />
+                                }
+                                @Html.HiddenFor(m => m.Foto)
+                                @Html.HiddenFor(m => m.ID)
+                            }<br />
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Foto</label></div>
+                                <div class="col-sm-6 input-column text-white">
+                                    <input type="file" name="upload" id="upload" accept=".png,.jpg,.jpeg,.gif,.tif" />
+                                    @Html.ValidationMessageFor(model => model.Uitvoering, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Prijs</label></div>
+                                <div class="col-sm-6 input-column text-white">
+                                    <input type="number" name="price" value="@Math.Round(Model.AutoPrijs.Where(t => t.AutoTypeID == Model.ID && DateTime.Now > t.StartDatum && t.EindDatum == null).First().Prijs, 2)" class="form-control" /><br />
+                                </div>
+                            </div>
+                            <div class="form-row form-group">
+                                <div class="col-sm-4 label-column"><label class="col-form-label" for="pawssword-input-field" style="color: rgb(255,255,255);">Beschikbaar</label></div>
+                                <div class="col-sm-6 input-column text-white">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.Beschikbaar)
+                                        @Html.ValidationMessageFor(model => model.Beschikbaar, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <input type="submit" value="Maak" class="btn btn-default submit-button" />
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+}
+

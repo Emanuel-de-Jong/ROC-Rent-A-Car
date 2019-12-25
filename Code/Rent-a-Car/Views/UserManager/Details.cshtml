@@ -1,0 +1,149 @@
+﻿@model Rent_a_Car.Models.AspNetUsers
+
+
+@{
+    ViewBag.Title = "Details";
+     Layout = "~/Views/Shared/_layoutAdmin.cshtml";
+}
+
+<div class="container" style="padding-top: 100px">
+    <div class="card">
+        <div class="card-body">
+            <h1>@Model.Voornaam @Model.Tussenvoegsel @Model.Achternaam</h1>
+            <hr />
+            <div class="row">
+
+                <div class="col-4">
+                    <h4>Persoons gegevens</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Voornaam:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Voornaam
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Tussenvoegsel:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Tussenvoegsel
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Achternaam:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Achternaam
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Geboortedatum:</b>
+                        </div>
+                        <div class="col-6">
+                            @DateTime.Parse(Model.Geboortedatum.ToString()).ToString("yyyy-dd-MM")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Rol:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.AspNetRoles.First().Name
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Lockout:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Lockout
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h4>Adres Gegevens</h4>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Straat:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Straat
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>HuisNummer:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Straat @Model.Toevoeging
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>PostCode:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.PostCode
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Plaats:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Plaats
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Provincie:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Provincie
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Land:</b>
+                        </div>
+                        <div class="col-6">
+                            @Model.Land
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <h4>Contact Gegevens</h4>
+                    <div class="row">
+                        <div class="col-5">
+                            <b>Email:</b>
+                        </div>
+                        <div class="col-7">
+                            @Model.Email
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <b>Telefoon:</b>
+                        </div>
+                        <div class="col-7">
+                            @Model.PhoneNumber
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new {@class = "btn btn-primary" })
+                    @Html.ActionLink("Back to List", "Index", new { id = Model.Id }, new {@class = "btn btn-primary" })
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

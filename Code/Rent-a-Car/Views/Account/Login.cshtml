@@ -1,0 +1,72 @@
+﻿@using Rent_a_Car.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rent-a-Car @ViewBag.Title</title>
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/assets/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link rel="icon" type="image/png" sizes="1158x666" href="assets/img/3-cars.png">
+        <link rel="icon" type="image/png" sizes="1158x666" href="assets/img/3-cars.png">
+        <link rel="icon" type="image/png" sizes="1158x666" href="assets/img/3-cars.png">
+        <link rel="icon" type="image/png" sizes="1158x666" href="assets/img/3-cars.png">
+        <link rel="icon" type="image/png" sizes="1158x666" href="assets/img/3-cars.png">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    </head>
+
+<style>
+    body {
+        background-color: #283655;
+    }
+</style>
+
+<div class="login-dark text-white" style="color: white !important; height:90vh;">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h2 class="sr-only">Login Form</h2>
+        <div class="illustration">
+            <i class="fas fa-lock" style="color: white;"></i>
+        </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+        </div>
+
+            @Html.CheckBoxFor(m => m.RememberMe)
+            <span>Onthoud Mij</span>
+
+        <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Log In</button>
+        </div>
+        <a style="color: white !important;" class="forgot" href="#">Forgot your email or password?</a>
+        <a style="color: white !important;" class="forgot" href="~//">Back to home</a>
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="assets/js/freelancer.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

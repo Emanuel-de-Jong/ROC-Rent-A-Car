@@ -1,0 +1,833 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Voornaam" Type="nvarchar(max)" />
+          <Property Name="Tussenvoegsel" Type="nvarchar(max)" />
+          <Property Name="Achternaam" Type="nvarchar(max)" />
+          <Property Name="Geboortedatum" Type="datetime" Nullable="false" />
+          <Property Name="Straat" Type="nvarchar(max)" />
+          <Property Name="Huisnummer" Type="int" Nullable="false" />
+          <Property Name="Toevoeging" Type="nvarchar(max)" />
+          <Property Name="PostCode" Type="nvarchar(max)" />
+          <Property Name="Plaats" Type="nvarchar(max)" />
+          <Property Name="Provincie" Type="nvarchar(max)" />
+          <Property Name="Land" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="AutoID" />
+          </Key>
+          <Property Name="AutoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AutoTypeID" Type="int" Nullable="false" />
+          <Property Name="Kenteken" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="BouwJaar" Type="int" Nullable="false" />
+          <Property Name="Beschikbaar" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutoPrijs">
+          <Key>
+            <PropertyRef Name="StartDatum" />
+            <PropertyRef Name="AutoTypeID" />
+          </Key>
+          <Property Name="StartDatum" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EindDatum" Type="datetime2" Precision="7" />
+          <Property Name="Prijs" Type="money" Nullable="false" />
+          <Property Name="AutoTypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Merk" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LaadRuimte" Type="int" Nullable="false" />
+          <Property Name="SchakelTypeID" Type="int" Nullable="false" />
+          <Property Name="Trekhaak" Type="bit" Nullable="false" />
+          <Property Name="ZitPlaatsen" Type="int" Nullable="false" />
+          <Property Name="BrandstofID" Type="int" Nullable="false" />
+          <Property Name="Gewicht" Type="int" Nullable="false" />
+          <Property Name="AantalDeuren" Type="int" Nullable="false" />
+          <Property Name="Uitvoering" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Beschikbaar" Type="bit" Nullable="false" />
+          <Property Name="Foto" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Brandstof">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandstofType" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BTW">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BTW" Type="float" Nullable="false" />
+          <Property Name="StartDatum" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EindDatum" Type="datetime2" Precision="7" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SchakelType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Schakeltype" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Verhuring">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StartDatum" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="EindDatum" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="GebruikerID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Beschrijving" Type="text" />
+          <Property Name="Prijs" Type="money" Nullable="false" />
+          <Property Name="Geldig" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VerhuringAutos">
+          <Key>
+            <PropertyRef Name="AutoID" />
+            <PropertyRef Name="VerhuringID" />
+          </Key>
+          <Property Name="AutoID" Type="int" Nullable="false" />
+          <Property Name="VerhuringID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Auto_AutoType">
+          <End Role="AutoType" Type="Self.AutoType" Multiplicity="1" />
+          <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Auto">
+              <PropertyRef Name="AutoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPrijs_AutoType">
+          <End Role="AutoType" Type="Self.AutoType" Multiplicity="1" />
+          <End Role="AutoPrijs" Type="Self.AutoPrijs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AutoPrijs">
+              <PropertyRef Name="AutoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoType_Brandstof">
+          <End Role="Brandstof" Type="Self.Brandstof" Multiplicity="1" />
+          <End Role="AutoType" Type="Self.AutoType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brandstof">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AutoType">
+              <PropertyRef Name="BrandstofID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoType_SchakelType">
+          <End Role="SchakelType" Type="Self.SchakelType" Multiplicity="1" />
+          <End Role="AutoType" Type="Self.AutoType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchakelType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AutoType">
+              <PropertyRef Name="SchakelTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verhuring_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="Verhuring" Type="Self.Verhuring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Verhuring">
+              <PropertyRef Name="GebruikerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VerhuringAutos_Auto">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+          <End Role="VerhuringAutos" Type="Self.VerhuringAutos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="AutoID" />
+            </Principal>
+            <Dependent Role="VerhuringAutos">
+              <PropertyRef Name="AutoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VerhuringAutos_Verhuring">
+          <End Role="Verhuring" Type="Self.Verhuring" Multiplicity="1" />
+          <End Role="VerhuringAutos" Type="Self.VerhuringAutos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verhuring">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VerhuringAutos">
+              <PropertyRef Name="VerhuringID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spGetAutoPrice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CHECKINDATE" Type="date" Mode="In" />
+          <Parameter Name="AutoTypeID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoPrijs" EntityType="Self.AutoPrijs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutoType" EntityType="Self.AutoType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brandstof" EntityType="Self.Brandstof" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BTW" EntityType="Self.BTW" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SchakelType" EntityType="Self.SchakelType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Verhuring" EntityType="Self.Verhuring" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VerhuringAutos" EntityType="Self.VerhuringAutos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Auto_AutoType" Association="Self.FK_Auto_AutoType">
+            <End Role="AutoType" EntitySet="AutoType" />
+            <End Role="Auto" EntitySet="Auto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPrijs_AutoType" Association="Self.FK_AutoPrijs_AutoType">
+            <End Role="AutoType" EntitySet="AutoType" />
+            <End Role="AutoPrijs" EntitySet="AutoPrijs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoType_Brandstof" Association="Self.FK_AutoType_Brandstof">
+            <End Role="Brandstof" EntitySet="Brandstof" />
+            <End Role="AutoType" EntitySet="AutoType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoType_SchakelType" Association="Self.FK_AutoType_SchakelType">
+            <End Role="SchakelType" EntitySet="SchakelType" />
+            <End Role="AutoType" EntitySet="AutoType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verhuring_AspNetUsers" Association="Self.FK_Verhuring_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Verhuring" EntitySet="Verhuring" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerhuringAutos_Auto" Association="Self.FK_VerhuringAutos_Auto">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="VerhuringAutos" EntitySet="VerhuringAutos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VerhuringAutos_Verhuring" Association="Self.FK_VerhuringAutos_Verhuring">
+            <End Role="Verhuring" EntitySet="Verhuring" />
+            <End Role="VerhuringAutos" EntitySet="VerhuringAutos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Auto" EntityType="Model.Auto" />
+          <EntitySet Name="AutoPrijs" EntityType="Model.AutoPrijs" />
+          <EntitySet Name="AutoType" EntityType="Model.AutoType" />
+          <EntitySet Name="Brandstof" EntityType="Model.Brandstof" />
+          <EntitySet Name="BTW" EntityType="Model.BTW" />
+          <EntitySet Name="SchakelType" EntityType="Model.SchakelType" />
+          <EntitySet Name="Verhuring" EntityType="Model.Verhuring" />
+          <AssociationSet Name="FK_Auto_AutoType" Association="Model.FK_Auto_AutoType">
+            <End Role="AutoType" EntitySet="AutoType" />
+            <End Role="Auto" EntitySet="Auto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoPrijs_AutoType" Association="Model.FK_AutoPrijs_AutoType">
+            <End Role="AutoType" EntitySet="AutoType" />
+            <End Role="AutoPrijs" EntitySet="AutoPrijs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoType_Brandstof" Association="Model.FK_AutoType_Brandstof">
+            <End Role="Brandstof" EntitySet="Brandstof" />
+            <End Role="AutoType" EntitySet="AutoType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutoType_SchakelType" Association="Model.FK_AutoType_SchakelType">
+            <End Role="SchakelType" EntitySet="SchakelType" />
+            <End Role="AutoType" EntitySet="AutoType" />
+          </AssociationSet>
+          <AssociationSet Name="VerhuringAutos" Association="Model.VerhuringAutos">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="Verhuring" EntitySet="Verhuring" />
+          </AssociationSet>
+          <FunctionImport Name="spGetAutoPrice" ReturnType="Collection(Decimal)">
+            <Parameter Name="CHECKINDATE" Mode="In" Type="DateTime" />
+            <Parameter Name="AutoTypeID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Model.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Model.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUsers" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Verhuring_AspNetUsers" Association="Model.FK_Verhuring_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Verhuring" EntitySet="Verhuring" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Model.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Auto">
+          <Key>
+            <PropertyRef Name="AutoID" />
+          </Key>
+          <Property Name="AutoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AutoTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Kenteken" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="BouwJaar" Type="Int32" Nullable="false" />
+          <Property Name="Beschikbaar" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AutoType" Relationship="Model.FK_Auto_AutoType" FromRole="Auto" ToRole="AutoType" />
+          <NavigationProperty Name="Verhuring" Relationship="Model.VerhuringAutos" FromRole="Auto" ToRole="Verhuring" />
+        </EntityType>
+        <EntityType Name="AutoPrijs">
+          <Key>
+            <PropertyRef Name="StartDatum" />
+            <PropertyRef Name="AutoTypeID" />
+          </Key>
+          <Property Name="StartDatum" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EindDatum" Type="DateTime" Precision="7" />
+          <Property Name="Prijs" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="AutoTypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AutoType" Relationship="Model.FK_AutoPrijs_AutoType" FromRole="AutoPrijs" ToRole="AutoType" />
+        </EntityType>
+        <EntityType Name="AutoType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Merk" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LaadRuimte" Type="Int32" Nullable="false" />
+          <Property Name="SchakelTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Trekhaak" Type="Boolean" Nullable="false" />
+          <Property Name="ZitPlaatsen" Type="Int32" Nullable="false" />
+          <Property Name="BrandstofID" Type="Int32" Nullable="false" />
+          <Property Name="Gewicht" Type="Int32" Nullable="false" />
+          <Property Name="AantalDeuren" Type="Int32" Nullable="false" />
+          <Property Name="Uitvoering" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Beschikbaar" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Auto" Relationship="Model.FK_Auto_AutoType" FromRole="AutoType" ToRole="Auto" />
+          <NavigationProperty Name="AutoPrijs" Relationship="Model.FK_AutoPrijs_AutoType" FromRole="AutoType" ToRole="AutoPrijs" />
+          <NavigationProperty Name="Brandstof" Relationship="Model.FK_AutoType_Brandstof" FromRole="AutoType" ToRole="Brandstof" />
+          <NavigationProperty Name="SchakelType" Relationship="Model.FK_AutoType_SchakelType" FromRole="AutoType" ToRole="SchakelType" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Brandstof">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandstofType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AutoType" Relationship="Model.FK_AutoType_Brandstof" FromRole="Brandstof" ToRole="AutoType" />
+        </EntityType>
+        <EntityType Name="BTW">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BTW1" Type="Double" Nullable="false" />
+          <Property Name="StartDatum" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EindDatum" Type="DateTime" Precision="7" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="SchakelType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Schakeltype1" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AutoType" Relationship="Model.FK_AutoType_SchakelType" FromRole="SchakelType" ToRole="AutoType" />
+        </EntityType>
+        <EntityType Name="Verhuring">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StartDatum" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="EindDatum" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="GebruikerID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Beschrijving" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Prijs" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Geldig" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Auto" Relationship="Model.VerhuringAutos" FromRole="Verhuring" ToRole="Auto" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_Verhuring_AspNetUsers" FromRole="Verhuring" ToRole="AspNetUsers" />
+        </EntityType>
+        <Association Name="FK_Auto_AutoType">
+          <End Type="Model.AutoType" Role="AutoType" Multiplicity="1" />
+          <End Type="Model.Auto" Role="Auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Auto">
+              <PropertyRef Name="AutoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoPrijs_AutoType">
+          <End Type="Model.AutoType" Role="AutoType" Multiplicity="1" />
+          <End Type="Model.AutoPrijs" Role="AutoPrijs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutoType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AutoPrijs">
+              <PropertyRef Name="AutoTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoType_Brandstof">
+          <End Type="Model.Brandstof" Role="Brandstof" Multiplicity="1" />
+          <End Type="Model.AutoType" Role="AutoType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brandstof">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AutoType">
+              <PropertyRef Name="BrandstofID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutoType_SchakelType">
+          <End Type="Model.SchakelType" Role="SchakelType" Multiplicity="1" />
+          <End Type="Model.AutoType" Role="AutoType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SchakelType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AutoType">
+              <PropertyRef Name="SchakelTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VerhuringAutos">
+          <End Type="Model.Auto" Role="Auto" Multiplicity="*" />
+          <End Type="Model.Verhuring" Role="Verhuring" Multiplicity="*" />
+        </Association>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Voornaam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tussenvoegsel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Achternaam" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Geboortedatum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Straat" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Huisnummer" Type="Int32" Nullable="false" />
+          <Property Name="Toevoeging" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Plaats" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Provincie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Land" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="Verhuring" Relationship="Model.FK_Verhuring_AspNetUsers" FromRole="AspNetUsers" ToRole="Verhuring" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Model.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.AspNetUserClaims" Role="AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.AspNetUserLogins" Role="AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Verhuring_AspNetUsers">
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="1" />
+          <End Type="Model.Verhuring" Role="Verhuring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Verhuring">
+              <PropertyRef Name="GebruikerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="Model.AspNetRoles" Role="AspNetRoles" Multiplicity="*" />
+          <End Type="Model.AspNetUsers" Role="AspNetUsers" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Auto">
+            <EntityTypeMapping TypeName="Model.Auto">
+              <MappingFragment StoreEntitySet="Auto">
+                <ScalarProperty Name="Beschikbaar" ColumnName="Beschikbaar" />
+                <ScalarProperty Name="BouwJaar" ColumnName="BouwJaar" />
+                <ScalarProperty Name="Kenteken" ColumnName="Kenteken" />
+                <ScalarProperty Name="AutoTypeID" ColumnName="AutoTypeID" />
+                <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoPrijs">
+            <EntityTypeMapping TypeName="Model.AutoPrijs">
+              <MappingFragment StoreEntitySet="AutoPrijs">
+                <ScalarProperty Name="AutoTypeID" ColumnName="AutoTypeID" />
+                <ScalarProperty Name="Prijs" ColumnName="Prijs" />
+                <ScalarProperty Name="EindDatum" ColumnName="EindDatum" />
+                <ScalarProperty Name="StartDatum" ColumnName="StartDatum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AutoType">
+            <EntityTypeMapping TypeName="Model.AutoType">
+              <MappingFragment StoreEntitySet="AutoType">
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Beschikbaar" ColumnName="Beschikbaar" />
+                <ScalarProperty Name="Uitvoering" ColumnName="Uitvoering" />
+                <ScalarProperty Name="AantalDeuren" ColumnName="AantalDeuren" />
+                <ScalarProperty Name="Gewicht" ColumnName="Gewicht" />
+                <ScalarProperty Name="BrandstofID" ColumnName="BrandstofID" />
+                <ScalarProperty Name="ZitPlaatsen" ColumnName="ZitPlaatsen" />
+                <ScalarProperty Name="Trekhaak" ColumnName="Trekhaak" />
+                <ScalarProperty Name="SchakelTypeID" ColumnName="SchakelTypeID" />
+                <ScalarProperty Name="LaadRuimte" ColumnName="LaadRuimte" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Merk" ColumnName="Merk" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brandstof">
+            <EntityTypeMapping TypeName="Model.Brandstof">
+              <MappingFragment StoreEntitySet="Brandstof">
+                <ScalarProperty Name="BrandstofType" ColumnName="BrandstofType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BTW">
+            <EntityTypeMapping TypeName="Model.BTW">
+              <MappingFragment StoreEntitySet="BTW">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="EindDatum" ColumnName="EindDatum" />
+                <ScalarProperty Name="StartDatum" ColumnName="StartDatum" />
+                <ScalarProperty Name="BTW1" ColumnName="BTW" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchakelType">
+            <EntityTypeMapping TypeName="Model.SchakelType">
+              <MappingFragment StoreEntitySet="SchakelType">
+                <ScalarProperty Name="Schakeltype1" ColumnName="Schakeltype" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verhuring">
+            <EntityTypeMapping TypeName="Model.Verhuring">
+              <MappingFragment StoreEntitySet="Verhuring">
+                <ScalarProperty Name="Geldig" ColumnName="Geldig" />
+                <ScalarProperty Name="Prijs" ColumnName="Prijs" />
+                <ScalarProperty Name="Beschrijving" ColumnName="Beschrijving" />
+                <ScalarProperty Name="GebruikerID" ColumnName="GebruikerID" />
+                <ScalarProperty Name="EindDatum" ColumnName="EindDatum" />
+                <ScalarProperty Name="StartDatum" ColumnName="StartDatum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="VerhuringAutos" TypeName="Model.VerhuringAutos" StoreEntitySet="VerhuringAutos">
+            <EndProperty Name="Verhuring">
+              <ScalarProperty Name="ID" ColumnName="VerhuringID" />
+            </EndProperty>
+            <EndProperty Name="Auto">
+              <ScalarProperty Name="AutoID" ColumnName="AutoID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="spGetAutoPrice" FunctionName="Model.Store.spGetAutoPrice" />
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Model.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Land" ColumnName="Land" />
+                <ScalarProperty Name="Provincie" ColumnName="Provincie" />
+                <ScalarProperty Name="Plaats" ColumnName="Plaats" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Toevoeging" ColumnName="Toevoeging" />
+                <ScalarProperty Name="Huisnummer" ColumnName="Huisnummer" />
+                <ScalarProperty Name="Straat" ColumnName="Straat" />
+                <ScalarProperty Name="Geboortedatum" ColumnName="Geboortedatum" />
+                <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
+                <ScalarProperty Name="Tussenvoegsel" ColumnName="Tussenvoegsel" />
+                <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
