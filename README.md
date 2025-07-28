@@ -1,4 +1,4 @@
-# Rent-A-Car
+# Rent A Car
 
 ## Description
 Our third school project.
