@@ -19,6 +19,6 @@ This was made with almost the same time in mind as the exams.
 - Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
 
 ## Progress
-- Start date: 18.11.19
-- Last change: 13.12.19
+- Start date: 2019-11-18
+- Last change: 2019-12-13
 - Activity status: Complete
