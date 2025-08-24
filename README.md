@@ -1,7 +1,7 @@
 # Rent A Car
-Our third school project.
+A webapp for a company to rent out cars to customers. Our third big school project.
 
-This was made with almost the same time in mind as the exams.
+This was made in the same amount of time that we had for the final exam, so we could prepare for it.
 
 **Active Development:** <br>
 **Last Change:** <br>
