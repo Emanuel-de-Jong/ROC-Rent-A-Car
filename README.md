@@ -3,8 +3,8 @@ A webapp for a company to rent out cars to customers. Our third big school proje
 
 This was made in the same amount of time that we had for the final exam, so we could prepare for it.
 
-**Active Development:** <br>
-**Last Change:** <br>
+**Active Development:** 2019-11-18 - 2019-11-30<br>
+**Last Change:** 2019-11-30<br>
 
 | | |
 | :---: | :---: |
@@ -17,8 +17,3 @@ This was made in the same amount of time that we had for the final exam, so we c
 - Language: Dutch
 - Programming languages: C#, HTML, CSS, JS, SQL
 - Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
-
-## Progress
-- Start date: 2019-11-18
-- Last change: 2019-12-13
-- Activity status: Complete
