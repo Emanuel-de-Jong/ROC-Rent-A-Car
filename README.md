@@ -17,3 +17,4 @@ This was made in the same amount of time that we had for the final exam, so we c
 - Language: Dutch
 - Programming languages: C#, HTML, CSS, JS, SQL
 - Frameworks and libraries: ASP.NET MVC, .NET Framework, Bootstrap, DataTables
+ 
